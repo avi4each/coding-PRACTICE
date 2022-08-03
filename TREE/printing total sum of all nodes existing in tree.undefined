@@ -1,0 +1,48 @@
+#include <bits/stdc++.h>
+using namespace std;
+// printing total sum of all nodes existing in tree
+struct Node  
+{ 
+  int key; 
+  struct Node *left; 
+  struct Node *right; 
+  Node(int k){
+      key=k;
+      left=right=NULL;
+  }
+};
+
+int printSumValues(Node *root){
+    if(root==NULL){
+        return 0;
+    }
+   int ls=printSumValues(root->left);
+    int rs=printSumValues(root->right);
+    int total=ls+rs+root->key;
+        return total;
+    
+}
+/*              //without using extra variables and by the help of direct return we can find sum
+
+int printSumValues(Node *root){
+    if(root==NULL){
+        return 0;
+    }
+   else
+        return root->key+printSumValues(root->left)+printSumValues(root->right);
+}
+*/
+
+int main() {
+	
+	Node *root=new Node(10);
+	root->left=new Node(20);
+	root->right=new Node(30);
+	root->left->left=new Node(40);
+	root->left->right=new Node(50);
+	root->right->right=new Node(70);
+	root->right->right->right=new Node(80);
+	int k=2;
+	
+    cout<<printSumValues(root);
+}

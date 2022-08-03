@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+using namespace std;
+// printing left view of binary  tree   //stack overflow - unable to run
+
+struct Node  
+{ 
+  int key; 
+  struct Node *left; 
+  struct Node *right; 
+  Node(int k){
+      key=k;
+      left=right=NULL;
+  }
+};
+    void leftSideTraversal(Node *root,int k,vector<int> &v){
+        
+        if(root==NULL)
+            return ;
+        if(k==v.size()){ //1st time It came to this level and insert this to vector
+            v.push_back(root->key);
+        }
+        leftSideTraversal(root->left,k+1,v);
+        leftSideTraversal(root->right,k+1,v);
+    }
+    vector<int> leftSideView(Node* root) {
+        vector<int>v;
+        leftSideTraversal(root,0,v);
+        int n=0;
+        for(auto nums:v)
+        cout<<nums;
+    }
+    
+int main() {
+	Node *root=new Node(10);
+	root->left=new Node(20);
+	root->right=new Node(30);
+	root->left->left=new Node(40);
+	root->left->right=new Node(50);
+	root->right->right=new Node(70);
+	root->right->right->right=new Node(80);
+    leftSideView(root);
+return 0;
+}

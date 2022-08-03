@@ -1,0 +1,17 @@
+#include<bits/stdc++.h>
+using namespace std;
+void printSubs(string s,string curr,int i){
+    if(i==s.length()){
+        cout<<curr<<"  ";
+        return;
+    }
+    printSubs(s,curr,i+1);
+    printSubs(s,curr+s[i],i+1);
+}
+
+int main(){
+    //print all subsets of S;
+    string S="ABC";
+    printSubs(S," ",0);
+    return 0;
+}

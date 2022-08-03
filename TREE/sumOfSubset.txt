@@ -1,0 +1,15 @@
+#include<bits/stdc++.h>  //find if given arrays subsets is equal to given sum
+using namespace std;
+int subsetSum(int arr[],int n,int sum){
+    if(n==0){       // for base condition if array passed is empty
+        return (sum==0)?1:0;
+    }
+    return subsetSum(arr,n-1,sum)+subsetSum(arr,n-1,sum-arr[n-1]);
+}
+
+int main(){
+    int a[]={10,5,2,3,6};
+    int n=8;
+    cout<<subsetSum(a,5,n);
+    return 0;
+}
